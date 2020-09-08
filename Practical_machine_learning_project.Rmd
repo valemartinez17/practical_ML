@@ -1,8 +1,8 @@
 ---
 title: 'Predicting Quality of Movement: Unilateral Dumbbell Biceps Curl'
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 date: "9/08/2020"
 ---
 
@@ -106,7 +106,6 @@ rf1_cm <- confusionMatrix(rf1_pred, pmlValidate_rf1$classe)
 rf1_cm
 ```
 
-
 ### Generalized Boosted Model
 The explanations for the choice of 5-fold cross validation and the confusion matrix are the same as the one explained in the section for Random Forest
 ```{r gbm, echo=TRUE, results='hide',eval=FALSE}
@@ -125,8 +124,6 @@ gbm1_cm <- confusionMatrix(gbm1_pred, pmlValidate_gbm1$classe)
 gbm1_cm
 
 ```
-
-
 
 ### XGBoost
 The code for training the XGBoost model is shown below. I did not use 5-fold cross validation (like for the other 2 models) due to time limitations; there is no direct way of getting a model using k-fold cross validation in R. I trained the model using the training set and then estimate the out-of-sample error on the validation data. 
@@ -269,7 +266,6 @@ Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible t
 
 The participants were asked to perform one set of 10 repetitions of the Unilateral Dumbbell Biceps Curl in five different fashions: exactly according to the specification (Class A), throwing the elbows to the front (Class B), lifting the dumbbell only halfway (Class C), lowering the dumbbell only halfway (Class D) and throwing the hips to the front (Class E). Class A corresponds to the specified execution of the exercise, while the other 4 classes correspond to common mistakes.
 
-
 ### Appendix B: Risks and next steps
 If more time is invested in this project, it would be good to tune the hyperparameters for each model, and to explore droping features based on an importance ranking.
 
@@ -278,7 +274,9 @@ The split into training and validation could have been done 80% training and 20%
 The columns in the dataset were not standardized because this is not required for the types of models used.
 
 The softmax objective function could be used in XGBoost to directly output the class with the greatest probability.
+
 ### Appendix C: References
+
 1. http://web.archive.org/web/20161224072740/http:/groupware.les.inf.puc-rio.br/har
 2. https://web.stanford.edu/~hastie/THESES/gareth_james.pdf
 3. https://en.wikipedia.org/wiki/Cross-validation_(statistics)
